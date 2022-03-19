@@ -1,8 +1,9 @@
-import React from 'react';
 import Tabs from "./Tabs";
 import ScrollToTopOnMount from "../ScrollToTopOnMount.js";
 import "./Homepage.css";
 import Banner from "./BannerShop";
+import React from 'react';
+import { TwitchEmbed, TwitchChat, TwitchClip, TwitchPlayer } from 'react-twitch-embed';
 
 export default function Homepage() {
     return (
@@ -18,7 +19,13 @@ export default function Homepage() {
             After 'while, <em>Crocodile</em>!
             </div>
             <div label="Live Stream">
-            Livestream comin soon
+            <TwitchEmbed
+                channel="Whippy"
+                id="Whippy"
+                theme="dark"
+                width="100%"
+                onVideoPause={() => console.log(':(')}
+            />
             </div>
             <div label="Product">
             Nothing to see here, this tab is <em>extinct</em>!
