@@ -1,7 +1,7 @@
 import Template from "./template/Template";
 import ProductDetail from "./products/detail/ProductDetail";
 import { Switch, Route } from "react-router-dom";
-import Landing from "./landing/Landing";
+import Landing from "./template/containers/Landing";
 import ProductList from "./products/ProductList";
 import Login from "./template/containers/login";
 import Signup from "./template/containers/signup";

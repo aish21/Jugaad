@@ -12,13 +12,16 @@ export default function Homepage() {
         <div>
         <h1>Tabs Demo</h1>
         <Tabs>
-            <div label="Gator">
+            <div label="About">
             See ya later, <em>Alligator</em>!
             </div>
-            <div label="Croc">
+            <div label="Videos">
             After 'while, <em>Crocodile</em>!
             </div>
-            <div label="Sarcosuchus">
+            <div label="Live Stream">
+            Nothing to see here, this tab is <em>extinct</em>!
+            </div>
+            <div label="Product">
             Nothing to see here, this tab is <em>extinct</em>!
             </div>
         </Tabs>
