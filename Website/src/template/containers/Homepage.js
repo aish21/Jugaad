@@ -18,7 +18,7 @@ export default function Homepage() {
             After 'while, <em>Crocodile</em>!
             </div>
             <div label="Live Stream">
-            Nothing to see here, this tab is <em>extinct</em>!
+            Livestream comin soon
             </div>
             <div label="Product">
             Nothing to see here, this tab is <em>extinct</em>!
