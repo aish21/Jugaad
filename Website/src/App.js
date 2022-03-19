@@ -5,6 +5,7 @@ import Landing from "./landing/Landing";
 import ProductList from "./products/ProductList";
 import Login from "./template/containers/login";
 import Signup from "./template/containers/signup";
+import Homepage from "./template/containers/Homepage";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route exact path="/Homepage">
+          <Homepage />
         </Route>
       </Switch>
     </Template>

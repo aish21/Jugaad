@@ -1,8 +1,11 @@
 import React from 'react';
 import Tabs from "./Tabs";
 import ScrollToTopOnMount from "../ScrollToTopOnMount.js";
+import "./Homepage.css";
 
 export default function Homepage() {
+
+
     return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />

@@ -2,21 +2,11 @@ import React from 'react'
 import {
   ChakraProvider,
   Stack,
-  Avatar,
-  AvatarBadge,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
   FormLabel,
   Input,
   FormHelperText,
   FormErrorMessage,
   Grid,
-  Switch,
-  InputGroup,
-  InputRightElement,
-  Icon,
   Flex,
   Box,
   Heading,
@@ -25,7 +15,7 @@ import {
   FormControl,
   Button
 } from '@chakra-ui/react'
-import { EmailIcon, ArrowForwardIcon } from '@chakra-ui/icons'
+import {  ArrowForwardIcon } from '@chakra-ui/icons'
 
 const JugaadIcon = () => (
   <Image height="100px" width="100px" src="PUT IMAGE PATH HERE" />
