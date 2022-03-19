@@ -16,6 +16,8 @@ import {
   Button
 } from '@chakra-ui/react'
 import {  ArrowForwardIcon } from '@chakra-ui/icons'
+import { signUpUser } from './loginAuth'
+import { useHistory } from 'react-router-dom'
 
 const JugaadIcon = () => (
   <Image height="100px" width="100px" src="PUT IMAGE PATH HERE" />
@@ -26,8 +28,24 @@ const RegisterPageHeading = () => (
     Register Your Business
   </Text>
 )
+var emailId = ""
+var password = ""
+export default function Signup() {
+  const history = useHistory();
+function OnClickEvent() {
+  signUpUser(emailId,password)
+  history.push("/Homepage")
+}
 
-const App = () => (
+const getEmail = (event) => {
+  emailId = event.target.value;
+}
+
+const getPass = (event) => {
+  password = event.target.value;
+}
+
+return (
   <ChakraProvider resetCSS>
     <Flex
       display="flex"
@@ -89,6 +107,7 @@ const App = () => (
               size="md"
               isFullWidth
               placeholder="Enter Email Address here"
+              onChange={getEmail}
             />
             <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText pb={3}>
@@ -159,7 +178,7 @@ const App = () => (
           </FormControl>
           <FormControl isRequired pt={5}>
             <FormLabel>Retype Password</FormLabel>
-            <Input size="md" isFullWidth placeholder="Enter Password here" />
+            <Input size="md" isFullWidth placeholder="Enter Password here" onChange={getPass}/>
           </FormControl>
           <FormControl isRequired>
               <FormLabel>Twitch ID</FormLabel>
@@ -180,7 +199,7 @@ const App = () => (
               </div>
             </FormControl>
         </Box>
-        <Button variant="solid" size="lg" leftIcon={<ArrowForwardIcon />}>
+        <Button variant="solid" size="lg" leftIcon={<ArrowForwardIcon />} onClick = {OnClickEvent}>
           Submit
         </Button>
       </Stack>
@@ -188,4 +207,4 @@ const App = () => (
   </ChakraProvider>
 )
 
-export default App
+}
