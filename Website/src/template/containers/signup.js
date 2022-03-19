@@ -172,27 +172,12 @@ const App = () => (
                 register for the same -{' '}
               </FormHelperText>
               <FormErrorMessage>Invalid Entry!</FormErrorMessage>
-              <Link
-                isExternal
-                href="https://www.twitch.tv"
-                pt={2}
-                fontStyle="italic"
-                fontSize="xs"
-                color="purple.500"
-                textAlign="center"
-              >
-                Register for Twitch
-              </Link>
-              <Link
-                href="https://www.twitch.tv/p/en/about/"
-                isExternal
-                pl={4}
-                fontStyle="italic"
-                fontSize="xs"
-                color="purple.500"
-              >
-                About Twitch
-              </Link>
+              <div>
+              <a target="_blank" href="https://www.twitch.tv" rel = "noreferrer">Register  for Twitch</a>
+              </div>
+              <div>
+              <a target="_blank" href="https://www.twitch.tv/p/en/about/" rel = "noreferrer">About Twitch</a>
+              </div>
             </FormControl>
         </Box>
         <Button variant="solid" size="lg" leftIcon={<ArrowForwardIcon />}>

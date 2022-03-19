@@ -2,15 +2,14 @@ import React from 'react';
 import Tabs from "./Tabs";
 import ScrollToTopOnMount from "../ScrollToTopOnMount.js";
 import "./Homepage.css";
+import Banner from "./BannerShop";
 
 export default function Homepage() {
-
-
     return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
+        <Banner/>
         <div>
-        <h1>Tabs Demo</h1>
         <Tabs>
             <div label="About">
             See ya later, <em>Alligator</em>!
