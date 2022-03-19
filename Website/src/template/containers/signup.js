@@ -81,7 +81,7 @@ const App = () => (
           <FormControl isRequired mb={3}>
             <FormLabel>Last Name</FormLabel>
             <Input size="md" isFullWidth placeholder="Enter Last Name here" />
-            <FormErrorMessage>Error message</FormErrorMessage>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Email Address</FormLabel>
@@ -90,7 +90,7 @@ const App = () => (
               isFullWidth
               placeholder="Enter Email Address here"
             />
-            <FormErrorMessage>Error message</FormErrorMessage>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText pb={3}>
               This is the company official's email address
             </FormHelperText>
@@ -102,7 +102,7 @@ const App = () => (
               isFullWidth
               placeholder="Enter Company Name here"
             />
-            <FormErrorMessage>Error message</FormErrorMessage>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired mb={3}>
             <FormLabel>Company Contact Number</FormLabel>
@@ -111,10 +111,11 @@ const App = () => (
               isFullWidth
               placeholder="Enter Contact Number here"
             />
-            <FormErrorMessage>Error message</FormErrorMessage>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText>
               This is the company's hotline number for customers
             </FormHelperText>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired mb={3}>
             <FormLabel>Company Email</FormLabel>
@@ -123,10 +124,11 @@ const App = () => (
               isFullWidth
               placeholder="Enter Email Address here"
             />
-            <FormErrorMessage>Error message</FormErrorMessage>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText>
               This is the email address for business enquiries (for customers)
             </FormHelperText>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired pb={5}>
             <FormLabel textAlign="center" pt={3} fontSize="xl">
@@ -148,16 +150,50 @@ const App = () => (
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
             <Input size="md" isFullWidth placeholder="Enter Password here" />
-            <FormErrorMessage>Error message</FormErrorMessage>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText>
               Password must have a length of at least 8 characters, including
               numbers, upper case letters and special case characters
             </FormHelperText>
+            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired pt={5}>
             <FormLabel>Retype Password</FormLabel>
             <Input size="md" isFullWidth placeholder="Enter Password here" />
           </FormControl>
+          <FormControl isRequired>
+              <FormLabel>Twitch ID</FormLabel>
+              <Input />
+              <FormHelperText>
+                Twitch ID is required to facilitate the live streaming option
+                for your business. Twitch allows users to seamlessly connect to
+                your livestream, donate to your stream via Twitch, and support
+                your content via live chat. You can learn more about Twitch and
+                register for the same -{' '}
+              </FormHelperText>
+              <FormErrorMessage>Invalid Entry!</FormErrorMessage>
+              <Link
+                isExternal
+                href="https://www.twitch.tv"
+                pt={2}
+                fontStyle="italic"
+                fontSize="xs"
+                color="purple.500"
+                textAlign="center"
+              >
+                Register for Twitch
+              </Link>
+              <Link
+                href="https://www.twitch.tv/p/en/about/"
+                isExternal
+                pl={4}
+                fontStyle="italic"
+                fontSize="xs"
+                color="purple.500"
+              >
+                About Twitch
+              </Link>
+            </FormControl>
         </Box>
         <Button variant="solid" size="lg" leftIcon={<ArrowForwardIcon />}>
           Submit
