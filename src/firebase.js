@@ -97,6 +97,6 @@ export function readUserData(uid) {
     const userRef = ref(database, 'users/' + uid);
     onValue(userRef, (snapshot) => {
         const data = snapshot.val();
-        console.log(data)
+        return data;
     });
 }

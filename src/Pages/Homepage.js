@@ -4,6 +4,23 @@ import "./Homepage.css";
 import Banner from "../Components/BannerShop";
 import React from 'react';
 import {
+    ChakraProvider,
+    Stack,
+    Avatar,
+    AvatarBadge,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+    FormLabel,
+    Input,
+    FormHelperText,
+    FormErrorMessage,
+    Grid,
+    Switch,
+    InputGroup,
+    InputRightElement,
+    Icon,
     Text,
     Box,
     Container,
@@ -11,9 +28,22 @@ import {
     Button
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
-import { auth } from '../firebase';
+import { auth, database } from '../firebase';
+import {ref, onValue } from "firebase/database";
 
 export default function Homepage() {
+
+  var data = null;
+  const user = auth.currentUser;
+
+  if(user != null){
+    const userRef = ref(database, 'users/' + user.uid);
+    onValue(userRef, (snapshot) => {
+      data = snapshot.val();
+      console.log(data);
+    });
+  }
+  
 
     return (
     <div className="container mt-5 py-4 px-xl-5">
@@ -22,6 +52,68 @@ export default function Homepage() {
         <div>
         <Tabs>
             <div label="About">
+            <Box
+          backgroundColor="white"
+          boxShadow="sm"
+          borderRadius="lg"
+          pl={3}
+          pr={3}
+          pt={5}
+          pb={5}
+          display="flex"
+          flexDirection="column"
+        >
+          <Text textAlign="center" fontWeight="bold" fontSize="4xl">
+            About Us
+          </Text>
+          <Text
+            display="inline"
+            mt={3}
+            fontWeight="bold"
+            textAlign="left"
+            fontSize="lg"
+          >
+            Business Name
+          </Text>
+          <Text>{data.companyName}</Text>
+          <Text
+            display="inline"
+            mt={3}
+            fontWeight="bold"
+            textAlign="left"
+            fontSize="lg"
+          >
+            Company Email
+          </Text>
+          <Text>{data.companyEmail}</Text>
+          <Text
+            display="inline"
+            mt={3}
+            fontWeight="bold"
+            textAlign="left"
+            fontSize="lg"
+          >
+            Company Contact{' '}
+          </Text>
+          <Text>Text value</Text>
+        </Box>
+            </div>
+            <div label="Live Chat">
+            After 'while, <em>Crocodile</em>!
+            </div>
+            <div label="Live Stream">
+            <TwitchEmbed
+                channel="Whippy"
+                id="Whippy"
+                theme="dark"
+                width="100%"
+                onVideoPause={() => console.log(':(')}
+            />
+            </div>
+            <div label="Product">
+            Nothing to see here, this tab is <em>extinct</em>!
+            </div>
+            <div label = "Settings">
             <Box
           backgroundColor="white"
           boxShadow="sm"
@@ -123,21 +215,6 @@ export default function Homepage() {
             </Button>
           </Container>
         </Box>
-            </div>
-            <div label="Live Chat">
-            After 'while, <em>Crocodile</em>!
-            </div>
-            <div label="Live Stream">
-            <TwitchEmbed
-                channel="Whippy"
-                id="Whippy"
-                theme="dark"
-                width="100%"
-                onVideoPause={() => console.log(':(')}
-            />
-            </div>
-            <div label="Product">
-            Nothing to see here, this tab is <em>extinct</em>!
             </div>
         </Tabs>
         </div>
