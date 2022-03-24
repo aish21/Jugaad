@@ -4,23 +4,6 @@ import "./Homepage.css";
 import Banner from "../Components/BannerShop";
 import React from 'react';
 import {
-    ChakraProvider,
-    Stack,
-    Avatar,
-    AvatarBadge,
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
-    FormLabel,
-    Input,
-    FormHelperText,
-    FormErrorMessage,
-    Grid,
-    Switch,
-    InputGroup,
-    InputRightElement,
-    Icon,
     Text,
     Box,
     Container,
@@ -40,11 +23,8 @@ export default function Homepage() {
     const userRef = ref(database, 'users/' + user.uid);
     onValue(userRef, (snapshot) => {
       data = snapshot.val();
-      console.log(data);
     });
   }
-  
-
     return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
