@@ -1,6 +1,6 @@
-import Banner from "./Banner";
-import FeatureProduct from "./FeatureProduct";
-import ScrollToTopOnMount from "../ScrollToTopOnMount.js";
+import Banner from "../Components/Banner";
+import FeatureProduct from "../Components/FeatureProduct";
+import ScrollToTopOnMount from "../Components/ScrollToTopOnMount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 

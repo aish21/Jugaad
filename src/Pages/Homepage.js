@@ -1,7 +1,7 @@
-import Tabs from "./Tabs";
-import ScrollToTopOnMount from "../ScrollToTopOnMount.js";
+import Tabs from "../Components/Tabs";
+import ScrollToTopOnMount from "../Components/ScrollToTopOnMount";
 import "./Homepage.css";
-import Banner from "./BannerShop";
+import Banner from "../Components/BannerShop";
 import React from 'react';
 import {
     ChakraProvider,
