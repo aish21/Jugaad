@@ -1,22 +1,17 @@
-import Template from "./template/Template";
-import ProductDetail from "./products/detail/ProductDetail";
+import './App.css';
 import { Switch, Route } from "react-router-dom";
-import Landing from "./template/containers/Landing";
-import ProductList from "./products/ProductList";
-import Login from "./template/containers/login";
-import Signup from "./template/containers/signup";
-import Homepage from "./template/containers/Homepage";
+
+// Import Pages
+import Template from "./Pages/Template";
+import Landing from "./Pages/Landing";
+import Login from "./Pages/login";
+import Signup from "./Pages/signup";
+import Homepage from "./Pages/Homepage";
 
 function App() {
   return (
     <Template>
       <Switch>
-        <Route path="/products" exact>
-          <ProductList />
-        </Route>
-        <Route path="/products/:slug">
-          <ProductDetail />
-        </Route>
         <Route path="/" exact>
           <Landing />
         </Route>

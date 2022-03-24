@@ -1,6 +1,6 @@
-import Header from "./Header";
-import Content from "./Content";
-import Footer from "./Footer";
+import Header from "../Components/Header";
+import Content from "../Components/Content";
+import Footer from "../Components/Footer";
 
 function Template(props) {
   return (
