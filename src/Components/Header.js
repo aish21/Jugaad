@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Logo from "./logo_size.jpg";
+import Logo from "../Images/logo_size.jpg";
 
 function Header() {
 

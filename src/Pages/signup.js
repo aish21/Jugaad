@@ -16,7 +16,7 @@ import {
   Button
 } from '@chakra-ui/react'
 import {  ArrowForwardIcon } from '@chakra-ui/icons'
-import { signUpUser } from './loginAuth'
+import { signUpUser } from '../firebase'
 import { useHistory } from 'react-router-dom'
 
 const JugaadIcon = () => (

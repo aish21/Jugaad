@@ -38,7 +38,7 @@ export function authorizeUser(email, password) {
 }
 
 export function signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID) {
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, emailId, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
@@ -55,7 +55,7 @@ export function signUpUser(emailId,password, firstName, lastName, companyName, c
 
 export function writeUserData(uid, emailId, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID) {
     set(ref(database, "users/" + uid), {
-      email: email,
+      email: emailId,
       firstName: firstName,
       lastName: lastName,
       companyName: companyName,

@@ -1,6 +1,6 @@
-import BannerZero from "../../public/Images/banner-1.jpg";
-import BannerOne from "../../public/Images/banner-1.jpg";
-import BannerTwo from "../../public/Images/banner-1.jpg";
+import BannerZero from "../Images/banner-1.jpg";
+import BannerOne from "../Images/banner-1.jpg";
+import BannerTwo from "../Images/banner-1.jpg";
 
 function BannerIncidator(props) {
   return (
