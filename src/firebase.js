@@ -18,6 +18,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
+export {app};
+export {auth,database};
+
 export function authorizeUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
