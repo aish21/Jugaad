@@ -1,0 +1,106 @@
+.chat__main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    
+    
+}
+.chat__header {
+    padding: 10px 25px;
+    background-color: whitesmoke;
+    color: #002f34;
+    box-shadow: 0px 2px 4px 0.5px rgba(186, 186, 186, 0.652);
+    border-radius: 7px 7px 0px 0px;
+    position: relative;
+    top: 0;
+}
+.chat__header:hover {
+    cursor: pointer;
+}
+.chat__header >h4 {
+    margin: 0;
+}
+.chat__backArrow {
+    font-size: xx-large;
+}
+.chat__messageContainer {
+    height: 100%;
+    background-color: rgb(235, 231, 231);
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px 20px 50px 20px;
+    overflow-y: auto; 
+
+}
+.chat__messageContainer > :first-child {
+    margin-top: auto;
+}
+.chat__message{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   width: max-content;
+   max-width: 500px;
+   
+   
+}
+.chat__messageSend{
+    background-color: rgb(0, 111, 0);
+    border-radius: 13px 13px 0px 13px ;
+    color: whitesmoke;
+    align-self: flex-end;
+}
+.chat__messageReceive {
+    background-color: #18410e;
+    color: whitesmoke;
+    border-radius: 0px 13px 13px 13px ;
+}
+.chat__messageText {
+    margin: 0;
+    padding: 5px 20px;
+}
+.chat__messageTime {
+    font-size: xx-small;
+    margin: 0;
+    padding: 0px 9px 3px 9px;
+    align-self: flex-end;
+}
+.chat__warning {
+    margin: auto;
+}
+.chat__inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(233, 233, 233, 0);
+    padding-bottom: 5px;
+    width: 100%;
+}
+.chat__input{
+    width: 80%;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    padding: 5px 25px;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 1px 1px 10px 0.1px rgba(255, 255, 255, 0.597);
+    mix-blend-mode: exclusion;
+    color: rgb(255, 255, 255);
+}
+.chat__inputContainer > i {
+    font-size: xx-large;
+    color: rgb(237, 123, 243);
+    mix-blend-mode: exclusion;
+}
+
+@media only screen and (max-width:800px) {
+    .chat__message{
+        max-width: 80%;
+    }
+}
