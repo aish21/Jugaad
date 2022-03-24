@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
@@ -65,6 +65,7 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
     })
     .then(() => {
         console.log("user data registered")
+        readUserData(uid);
         // ...
     })
     .catch((error) => {
@@ -73,3 +74,29 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
         console.log(errorCode);
     });
   }
+
+export function writeProductInfo(uid, title, desc, price, photoURL) {
+    set(ref(database, "users/" + uid), {
+        title: title,
+        desc: desc,
+        price: price,
+        photoURL: photoURL
+      })
+      .then(() => {
+          console.log("user data registered");
+          // ...
+      })
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+      });
+}
+
+export function readUserData(uid) {
+    const userRef = ref(database, 'users/' + uid);
+    onValue(userRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data)
+    });
+}

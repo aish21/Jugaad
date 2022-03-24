@@ -4,34 +4,14 @@ import "./Homepage.css";
 import Banner from "../Components/BannerShop";
 import React from 'react';
 import {
-    ChakraProvider,
-    Stack,
-    Avatar,
-    AvatarBadge,
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
-    FormLabel,
-    Input,
-    FormHelperText,
-    FormErrorMessage,
-    Grid,
-    Switch,
-    InputGroup,
-    InputRightElement,
-    Icon,
-    Flex,
     Text,
     Box,
     Container,
     Textarea,
     Button
   } from '@chakra-ui/react'
-  import { EmailIcon } from '@chakra-ui/icons'  
-import { TwitchEmbed, TwitchChat, TwitchClip, TwitchPlayer } from 'react-twitch-embed';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { TwitchEmbed } from 'react-twitch-embed';
+import { auth } from '../firebase';
 
 export default function Homepage() {
 
