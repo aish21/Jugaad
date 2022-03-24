@@ -103,7 +103,7 @@ export default function Homepage() {
             </div>
             <div label="Live Stream">
             <TwitchEmbed
-                channel="Whippy"
+                channel={data.twitchID}
                 id="Whippy"
                 theme="dark"
                 width="100%"
