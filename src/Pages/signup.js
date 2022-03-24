@@ -30,10 +30,18 @@ const RegisterPageHeading = () => (
 )
 var emailId = ""
 var password = ""
+var firstName = ""
+var lastName = ""
+var companyName = ""
+var companyContactNo = ""
+var companyEmail = ""
+var twitchID = ""
+
 export default function Signup() {
   const history = useHistory();
+
 function OnClickEvent() {
-  signUpUser(emailId,password)
+  signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID)
   history.push("/Homepage")
 }
 
@@ -43,6 +51,30 @@ const getEmail = (event) => {
 
 const getPass = (event) => {
   password = event.target.value;
+}
+
+const getFirstName = (event) => {
+  firstName = event.target.value;
+}
+
+const getLastName = (event) => {
+  lastName = event.target.value;
+}
+
+const getCompanyName = (event) => {
+  companyName = event.target.value;
+}
+
+const getCompanyEmail = (event) => {
+  companyEmail = event.target.value;
+}
+
+const getCompanyContact = (event) => {
+  companyContactNo = event.target.value;
+}
+
+const getTwitchID = (event) => {
+  twitchID = event.target.value;
 }
 
 return (
@@ -91,14 +123,14 @@ return (
           </Flex>
           <FormControl isRequired mb={3}>
             <FormLabel>First Name</FormLabel>
-            <Input size="md" placeholder="Enter First Name here" isFullWidth />
+            <Input size="md" placeholder="Enter First Name here" isFullWidth onChange = {getFirstName} />
             <FormErrorMessage>
               Invalid Entry, Please try again!
             </FormErrorMessage>
           </FormControl>
           <FormControl isRequired mb={3}>
             <FormLabel>Last Name</FormLabel>
-            <Input size="md" isFullWidth placeholder="Enter Last Name here" />
+            <Input size="md" isFullWidth placeholder="Enter Last Name here" onChange = {getLastName} />
             <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired>
@@ -120,6 +152,7 @@ return (
               size="md"
               isFullWidth
               placeholder="Enter Company Name here"
+              onChange = {getCompanyName}
             />
             <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
@@ -129,6 +162,7 @@ return (
               size="md"
               isFullWidth
               placeholder="Enter Contact Number here"
+              onChange = {getCompanyContact}
             />
             <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText>
@@ -142,29 +176,13 @@ return (
               size="md"
               isFullWidth
               placeholder="Enter Email Address here"
+              onChange = {getCompanyEmail}
             />
             <FormErrorMessage>Invalid Entry!</FormErrorMessage>
             <FormHelperText>
               This is the email address for business enquiries (for customers)
             </FormHelperText>
             <FormErrorMessage>Invalid Entry!</FormErrorMessage>
-          </FormControl>
-          <FormControl isRequired pb={5}>
-            <FormLabel textAlign="center" pt={3} fontSize="xl">
-              Company Address
-            </FormLabel>
-            <FormLabel mt={3}>Address Line 1</FormLabel>
-            <Input size="md" isFullWidth placeholder="Address Line 1" />
-            <FormLabel mt={3}>Address Line 2</FormLabel>
-            <Input size="md" isFullWidth placeholder="Address Line 2" />
-            <FormLabel mt={3}>City</FormLabel>
-            <Input size="md" isFullWidth placeholder="City" />
-            <FormLabel mt={3}>State</FormLabel>
-            <Input size="md" isFullWidth placeholder="State" />
-            <FormLabel mt={3}>Country</FormLabel>
-            <Input size="md" isFullWidth placeholder="Country" />
-            <FormLabel mt={3}>Zipcode</FormLabel>
-            <Input size="md" isFullWidth placeholder="Zipcode" />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
@@ -182,7 +200,7 @@ return (
           </FormControl>
           <FormControl isRequired>
               <FormLabel>Twitch ID</FormLabel>
-              <Input />
+              <Input onChange = {getTwitchID}/>
               <FormHelperText>
                 Twitch ID is required to facilitate the live streaming option
                 for your business. Twitch allows users to seamlessly connect to

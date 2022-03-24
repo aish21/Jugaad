@@ -37,12 +37,12 @@ export function authorizeUser(email, password) {
     });
 }
 
-export function signUpUser(email, password) {
+export function signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID) {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        writeUserData(user.uid, user.email, "test")
+        writeUserData(user.uid, emailId, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID);
         // ...
     })
     .catch((error) => {
@@ -53,13 +53,18 @@ export function signUpUser(email, password) {
     });
 }
 
-export function writeUserData(uid, email, name) {
-    set(ref(database, uid), {
+export function writeUserData(uid, emailId, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID) {
+    set(ref(database, "users/" + uid), {
       email: email,
-    name: name
+      firstName: firstName,
+      lastName: lastName,
+      companyName: companyName,
+      companyContactNo: companyContactNo,
+      companyEmail: companyEmail,
+      twitchID: twitchID
     })
     .then(() => {
-        
+        console.log("user data registered")
         // ...
     })
     .catch((error) => {
