@@ -3,17 +3,37 @@ import ScrollToTopOnMount from "../Components/ScrollToTopOnMount";
 import "./Homepage.css";
 import Banner from "../Components/BannerShop";
 import React from 'react';
+import { useContext, useRef, useState } from "react";
 import {
     Text,
     Box,
     Container,
     Textarea,
-    Button
+    Button,
+    ChakraProvider,
+    Stack,
+    Avatar,
+    AvatarBadge,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+    FormLabel,
+    Input,
+    FormHelperText,
+    FormErrorMessage,
+    Grid,
+    Switch,
+    InputGroup,
+    InputRightElement,
+    Icon,
+    FormControl
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
-import { auth, database } from '../firebase';
+import { auth, database, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
+import { AuthContext } from '../store/Context';
 
 export default function Homepage() {
 
@@ -25,15 +45,18 @@ export default function Homepage() {
     onValue(userRef, (snapshot) => {
       data = snapshot.val();
     });
+  } else{
+    console.log('error');
   }
-  // console.log(data.companyName);
 
   const links = [
-    'https://twitter.com/magicahmd',
-    'https://www.facebook.com/ahmdsalhi',
-    'https://www.youtube.com/magicahmd',
-    'https://www.instagram.com/ahmdsalhi',
+    'https://twitter.com',
+    'https://www.facebook.com',
+    'https://www.youtube.com',
+    'https://www.instagram.com',
   ];
+
+
     return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
@@ -102,6 +125,60 @@ export default function Homepage() {
             </div>
             <div label="Product">
             Nothing to see here, this tab is <em>extinct</em>!
+            </div>
+            <div label="Create Ad">
+            <ChakraProvider resetCSS>
+        <Box
+          backgroundColor="white"
+          boxShadow="sm"
+          borderRadius="lg"
+          pl={3}
+          pr={3}
+          pt={5}
+          pb={5}
+          display="flex"
+          flexDirection="column"
+        >
+          <Text textAlign="center" fontWeight="bold" fontSize="3xl">
+            Create Ad
+          </Text>
+          <FormControl isRequired mb={5}>
+            <FormLabel>Product / Service Title</FormLabel>
+            <Input placeholder="Enter title here" />
+            <FormErrorMessage>Error message</FormErrorMessage>
+          </FormControl>
+          <FormControl isRequired mb={5}>
+            <FormLabel>Product / Service Description</FormLabel>
+            <Input placeholder="Enter description here" />
+            <FormErrorMessage>Error message</FormErrorMessage>
+          </FormControl>
+          <FormControl isRequired mb={5}>
+            <FormLabel>Price (in SGD)</FormLabel>
+            <Input type="number" placeholder="Enter price here" />
+            <FormErrorMessage>Error message</FormErrorMessage>
+          </FormControl>
+          <FormControl isRequired display="flex" flexDirection="column">
+            <FormLabel>Upload Photo</FormLabel>
+            <img width="200px" max-height="400px" src="" alt="" />
+            <input type="file" class="custom-file-input" id="inputGroupFile02" />
+            <FormErrorMessage>Error message</FormErrorMessage>
+            <Button
+              variant="solid"
+              size="md"
+              display="flex"
+              justifyContent="center"
+              flexDirection="column"
+              alignItems="center"
+              mt={3}
+            >
+              Browse
+            </Button>
+          </FormControl>
+          <Button variant="solid" size="md" mt={10} colorScheme="whatsapp">
+            Upload Ad
+          </Button>
+        </Box>
+  </ChakraProvider>
             </div>
             <div label = "Settings">
             <Box
