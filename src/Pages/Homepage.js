@@ -64,6 +64,7 @@ export default function Homepage() {
         <div>
         <Tabs>
             <div label="About">
+              <ChakraProvider resetCSS>
             <Box
           backgroundColor="white"
           boxShadow="sm"
@@ -110,6 +111,7 @@ export default function Homepage() {
           <Text>{data.companyContactNo}</Text>
           <FollowAt links = {links}/>
         </Box>
+        </ChakraProvider>
             </div>
             <div label="Live Chat">
             After 'while, <em>Crocodile</em>!
