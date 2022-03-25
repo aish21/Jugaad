@@ -13,6 +13,7 @@ import {
 import { TwitchEmbed } from 'react-twitch-embed';
 import { auth, database } from '../firebase';
 import {ref, onValue } from "firebase/database";
+import FollowAt from "react-social-media-follow";
 
 export default function Homepage() {
 
@@ -25,6 +26,14 @@ export default function Homepage() {
       data = snapshot.val();
     });
   }
+  // console.log(data.companyName);
+
+  const links = [
+    'https://twitter.com/magicahmd',
+    'https://www.facebook.com/ahmdsalhi',
+    'https://www.youtube.com/magicahmd',
+    'https://www.instagram.com/ahmdsalhi',
+  ];
     return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
@@ -75,7 +84,8 @@ export default function Homepage() {
           >
             Company Contact{' '}
           </Text>
-          <Text>Text value</Text>
+          <Text>{data.companyContactNo}</Text>
+          <FollowAt links = {links}/>
         </Box>
             </div>
             <div label="Live Chat">

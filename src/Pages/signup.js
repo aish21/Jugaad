@@ -198,7 +198,7 @@ return (
             <FormLabel>Retype Password</FormLabel>
             <Input size="md" isFullWidth placeholder="Enter Password here" onChange={getPass}/>
           </FormControl>
-          <FormControl isRequired>
+          <FormControl isRequired mb={3}>
               <FormLabel>Twitch ID</FormLabel>
               <Input onChange = {getTwitchID}/>
               <FormHelperText>
