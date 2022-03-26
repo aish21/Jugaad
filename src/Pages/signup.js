@@ -42,7 +42,7 @@ export default function Signup() {
 
 function OnClickEvent() {
   signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID)
-  history.push("/Homepage")
+  history.push("/Login")
 }
 
 const getEmail = (event) => {
