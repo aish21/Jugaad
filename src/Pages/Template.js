@@ -7,7 +7,6 @@ function Template(props) {
     <>
       <Header />
       <Content>{props.children}</Content>
-      <Footer />
     </>
   );
 }

@@ -19,6 +19,7 @@ import { TwitchEmbed } from 'react-twitch-embed';
 import { updateSocials, database, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
+import Iframe from 'react-iframe';
 
 export default function Homepage() {
 
@@ -38,7 +39,7 @@ export default function Homepage() {
     onValue(userRef, (snapshot) => {
       const data = snapshot.val();
       setData(data);
-      setLinks(["https://twitter.com", data.fb.toString(), data.youtube.toString(), data.insta.toString()]);
+      // setLinks(["https://twitter.com", data.fb.toString(), data.youtube.toString(), data.insta.toString()]);
       // if(data.insta != null) {
       //   setInsta(data.insta.toString());
       //   setFB(data.fb.toString());
@@ -49,26 +50,26 @@ export default function Homepage() {
     });
   }, []); 
 
-  useEffect(() => {
-    console.log(data);
-    // if (data.insta != null) {
-    //   setInsta(data.insta.toString());
-    //   console.log("insta updated");
-    // }
-    // if (data.fb != null) {
-    //   setFB(data.fb.toString());
-    //   console.log("fb updated");
-    // }
-    // if (data.youtube != null) {
-    //   setYoutube(data.youtube.toString());
-    //   console.log("yt updated");
-    // }
-    // if(data.twitter != null) {
-    //   setTwitter(data.twitter.toString());
-    //   console.log("twitter updated");
-    // }
-    setLinks(["https://twitter.com", data.fb.toString(), data.youtube.toString(), data.insta.toString()]);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  //   // if (data.insta != null) {
+  //   //   setInsta(data.insta.toString());
+  //   //   console.log("insta updated");
+  //   // }
+  //   // if (data.fb != null) {
+  //   //   setFB(data.fb.toString());
+  //   //   console.log("fb updated");
+  //   // }
+  //   // if (data.youtube != null) {
+  //   //   setYoutube(data.youtube.toString());
+  //   //   console.log("yt updated");
+  //   // }
+  //   // if(data.twitter != null) {
+  //   //   setTwitter(data.twitter.toString());
+  //   //   console.log("twitter updated");
+  //   // }
+  //   setLinks(["https://twitter.com", data.fb.toString(), data.youtube.toString(), data.insta.toString()]);
+  // }, [data]);
 
   function onSubmitSettings() {
     updateSocials(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitter);
@@ -132,7 +133,14 @@ export default function Homepage() {
         </ChakraProvider>
             </div>
             <div label="Live Chat">
-            After 'while, <em>Crocodile</em>!
+            <Iframe url="https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe"
+                    width="86%"
+                    height="86%"
+                    position="absolute"
+                    id="myId"
+                    className="myClassname"
+                    overflow="visible"
+            />
             </div>
             <div label="Live Stream">
             <TwitchEmbed
