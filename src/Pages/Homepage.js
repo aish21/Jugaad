@@ -23,6 +23,9 @@ import FollowAt from "react-social-media-follow";
 export default function Homepage() {
 
   const [data, setData] = useState("");
+  const [insta, setInsta] = useState("");
+  const [fb, setFB] = useState("");
+  const [twitter, setTwitter] = useState(""); 
 
   useEffect(() => {
     const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));

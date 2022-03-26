@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
@@ -46,11 +46,14 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
       companyName: companyName,
       companyContactNo: companyContactNo,
       companyEmail: companyEmail,
-      twitchID: twitchID
+      twitchID: twitchID,
+      insta: null,
+      fb: null,
+      twitter: null
     })
     .then(() => {
         console.log("user data registered")
-        readUserData(uid);
+        localStorage.setItem("uid", JSON.stringify(uid));
         // ...
     })
     .catch((error) => {
@@ -74,12 +77,4 @@ export function writeProductInfo(uid, title, desc, price, photoURL) {
           const errorCode = error.code;
           console.log(errorCode);
       });
-}
-
-export function readUserData(uid) {
-    const userRef = ref(database, 'users/' + uid);
-    onValue(userRef, (snapshot) => {
-        const data = snapshot.val();
-        return data;
-    });
 }
