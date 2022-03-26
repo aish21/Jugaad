@@ -2,8 +2,7 @@ import Tabs from "../Components/Tabs";
 import ScrollToTopOnMount from "../Components/ScrollToTopOnMount";
 import "./Homepage.css";
 import Banner from "../Components/BannerShop";
-import React from 'react';
-import { useContext, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Text,
     Box,
@@ -11,43 +10,26 @@ import {
     Textarea,
     Button,
     ChakraProvider,
-    Stack,
-    Avatar,
-    AvatarBadge,
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
     FormLabel,
     Input,
-    FormHelperText,
     FormErrorMessage,
-    Grid,
-    Switch,
-    InputGroup,
-    InputRightElement,
-    Icon,
     FormControl
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
 import { auth, database, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
-import { AuthContext } from '../store/Context';
 
 export default function Homepage() {
 
-  var data = null;
-  const user = auth.currentUser;
+  const [data, setData] = useState("");
 
-  if(user != null){
-    const userRef = ref(database, 'users/' + user.uid);
+  useEffect(() => {
+    const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
     onValue(userRef, (snapshot) => {
-      data = snapshot.val();
+      setData(snapshot.val());
     });
-  } else{
-    console.log('error');
-  }
+  }, []);
 
   const links = [
     'https://twitter.com',

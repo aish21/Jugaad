@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
@@ -22,18 +22,6 @@ const firebasestorage = getStorage(app);
 
 export {app};
 export {auth,database, firebasestorage};
-
-export function authorizeUser(email, password) {
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        console.log(errorCode);
-    });
-}
 
 export function signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID) {
     createUserWithEmailAndPassword(auth, emailId, password)

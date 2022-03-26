@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ScrollToTopOnMount from "../Components/ScrollToTopOnMount";
 import { useHistory } from "react-router-dom";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import "./login.css";
 
 export default function Login() {
@@ -17,8 +19,20 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
   }
+
   function handleLogin() {
-    history.push("/Homepage")
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        localStorage.setItem("uid", JSON.stringify(user.uid));
+        history.push("/Homepage");
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        alert("Incorrect User Details. Please try again");
+    });
   }
 
   return (
