@@ -42,6 +42,7 @@ export default function Signup() {
 
 function OnClickEvent() {
   signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID)
+  alert("Successfully Registered! Please Login")
   history.push("/Login")
 }
 

@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, update } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
@@ -49,7 +49,7 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
       twitchID: twitchID,
       insta: null,
       fb: null,
-      twitter: null
+      youtube: null
     })
     .then(() => {
         console.log("user data registered")
@@ -77,4 +77,18 @@ export function writeProductInfo(uid, title, desc, price, photoURL) {
           const errorCode = error.code;
           console.log(errorCode);
       });
+}
+
+export function updateSocials(uid, insta, facebook, youtube, twitch) {
+    update(ref(database, "users/" + uid), {
+        insta: insta,
+        fb: facebook,
+        twitchID: twitch,
+        youtube: youtube
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+    });
+    alert("User data updated");
 }

@@ -16,16 +16,22 @@ import {
     FormControl
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
-import { auth, database, firebasestorage } from '../firebase';
+import { updateSocials, database, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
 
 export default function Homepage() {
 
+  function onSubmitSettings() {
+    console.log("submitted");
+    updateSocials(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitch);
+  }
+
   const [data, setData] = useState("");
   const [insta, setInsta] = useState("");
+  const [youTube, setYoutube] = useState("");
   const [fb, setFB] = useState("");
-  const [twitter, setTwitter] = useState(""); 
+  const [twitch, setTwitch] = useState(""); 
 
   useEffect(() => {
     const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
@@ -245,26 +251,31 @@ export default function Homepage() {
               resize="vertical"
               display="block"
               mb={5}
+              onChange = {(e) => setInsta(e.target.value)}
             />
             <Textarea
               placeholder="Enter link to YouTube Channel"
               resize="vertical"
               display="block"
               mb={5}
+              onChange = {(e) => setYoutube(e.target.value)}
             />
             <Textarea
               placeholder="Enter link to Facebook Page"
               resize="vertical"
               display="block"
               mb={5}
+              onChange = {(e) => setFB(e.target.value)}
             />
             <Textarea
               placeholder="Enter link to Twitch Channel"
               resize="vertical"
               display="block"
               mb={5}
+              onChange = {(e) => setTwitch(e.target.value)}
             />
-            <Button variant="solid" size="md">
+            <Button variant="solid" size="md"
+            onClick={onSubmitSettings}>
               Confirm Changes
             </Button>
           </Container>
