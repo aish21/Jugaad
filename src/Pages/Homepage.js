@@ -22,31 +22,58 @@ import FollowAt from "react-social-media-follow";
 
 export default function Homepage() {
 
-  function onSubmitSettings() {
-    console.log("submitted");
-    updateSocials(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitch);
-  }
-
   const [data, setData] = useState("");
-  const [insta, setInsta] = useState("");
-  const [youTube, setYoutube] = useState("");
-  const [fb, setFB] = useState("");
-  const [twitch, setTwitch] = useState(""); 
-
-  useEffect(() => {
-    const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
-    onValue(userRef, (snapshot) => {
-      setData(snapshot.val());
-    });
-  }, []);
-
-  const links = [
+  const [links, setLinks] = useState([
     'https://twitter.com',
     'https://www.facebook.com',
     'https://www.youtube.com',
-    'https://www.instagram.com',
-  ];
+    'https://www.instagram.com',    
+  ]);
+  const [insta, setInsta] = useState("https://www.instagram.com");
+  const [youTube, setYoutube] = useState("https://www.youtube.com");
+  const [fb, setFB] = useState("https://www.facebook.com");
+  const [twitter, setTwitter] = useState("https://twitter.com");
+  useEffect(() => {
+    const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
+    onValue(userRef, (snapshot) => {
+      const data = snapshot.val();
+      setData(data);
+      setLinks(["https://twitter.com", data.fb.toString(), data.youtube.toString(), data.insta.toString()]);
+      // if(data.insta != null) {
+      //   setInsta(data.insta.toString());
+      //   setFB(data.fb.toString());
+      //   setYoutube(data.youtube.toString());
+      //   // setTwitter(data.twitter.toString());
+      //   setLinks([twitter, fb, youTube, insta]);
+      // }
+    });
+  }, []); 
 
+  useEffect(() => {
+    console.log(data);
+    // if (data.insta != null) {
+    //   setInsta(data.insta.toString());
+    //   console.log("insta updated");
+    // }
+    // if (data.fb != null) {
+    //   setFB(data.fb.toString());
+    //   console.log("fb updated");
+    // }
+    // if (data.youtube != null) {
+    //   setYoutube(data.youtube.toString());
+    //   console.log("yt updated");
+    // }
+    // if(data.twitter != null) {
+    //   setTwitter(data.twitter.toString());
+    //   console.log("twitter updated");
+    // }
+    setLinks(["https://twitter.com", data.fb.toString(), data.youtube.toString(), data.insta.toString()]);
+  }, [data]);
+
+  function onSubmitSettings() {
+    updateSocials(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitter);
+    setLinks([twitter, fb, youTube, insta]);
+  }
 
     return (
     <div className="container mt-5 py-4 px-xl-5">
@@ -268,11 +295,11 @@ export default function Homepage() {
               onChange = {(e) => setFB(e.target.value)}
             />
             <Textarea
-              placeholder="Enter link to Twitch Channel"
+              placeholder="Enter link to Twitter Page"
               resize="vertical"
               display="block"
               mb={5}
-              onChange = {(e) => setTwitch(e.target.value)}
+              onChange = {(e) => setTwitter(e.target.value)}
             />
             <Button variant="solid" size="md"
             onClick={onSubmitSettings}>

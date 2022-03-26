@@ -49,11 +49,11 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
       twitchID: twitchID,
       insta: null,
       fb: null,
-      youtube: null
+      youtube: null,
+      twitter: null
     })
     .then(() => {
-        console.log("user data registered")
-        localStorage.setItem("uid", JSON.stringify(uid));
+        console.log("user data registered");
         // ...
     })
     .catch((error) => {
@@ -79,11 +79,11 @@ export function writeProductInfo(uid, title, desc, price, photoURL) {
       });
 }
 
-export function updateSocials(uid, insta, facebook, youtube, twitch) {
+export function updateSocials(uid, insta, facebook, youtube, twitter) {
     update(ref(database, "users/" + uid), {
         insta: insta,
         fb: facebook,
-        twitchID: twitch,
+        twitter: twitter,
         youtube: youtube
     })
     .catch((error) => {
