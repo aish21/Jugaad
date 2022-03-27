@@ -19,6 +19,7 @@ import { TwitchEmbed } from 'react-twitch-embed';
 import { updateSocials, database, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
+import Iframe from 'react-iframe';
 
 export default function Homepage() {
 
@@ -110,7 +111,14 @@ export default function Homepage() {
         </ChakraProvider>
             </div>
             <div label="Live Chat">
-            After 'while, <em>Crocodile</em>!
+            <Iframe url = "https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe">
+                    width="86%"
+                    height="86%"
+                    position="absolute"
+                    id="myID"
+                    className="myClassname"
+                    overflow="visible"
+            </Iframe>
             </div>
             <div label="Live Stream">
             <TwitchEmbed
