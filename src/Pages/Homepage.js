@@ -16,10 +16,11 @@ import {
     FormControl
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
-import { updateSocials, database, writeProductInfo } from '../firebase';
+import { updateSocials, database, writeProductInfo, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
 import Iframe from 'react-iframe';
+import { getDownloadURL, uploadBytes, ref as sRef } from "firebase/storage";
 
 export default function Homepage() {
 
@@ -37,6 +38,7 @@ export default function Homepage() {
   const [prodTitle, setProdTitle] = useState("");
   const [prodDesc, setProdDesc] = useState("");
   const [prodPrice, setProdPrice] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
@@ -58,8 +60,14 @@ export default function Homepage() {
   }
 
   function onSubmitAd() {
-    console.log(prodDesc);
-    writeProductInfo(JSON.parse(localStorage.getItem("uid")),prodTitle, prodDesc, prodPrice, "null");
+    const photoRef = sRef(firebasestorage, "adPicture/" + JSON.parse(localStorage.getItem("uid")) + "/" + prodTitle);
+    uploadBytes(photoRef, selectedFile).then((snapshot) => {
+      const photoURL = snapshot.ref.fullPath;
+      writeProductInfo(JSON.parse(localStorage.getItem("uid")),prodTitle, prodDesc, prodPrice, photoURL);
+    });
+    // const photoURL = getDownloadURL(sRef(firebasestorage, "adPicture/" + JSON.parse(localStorage.getItem("uid")) + "/" + prodTitle + ".jpeg"));
+    // console.log(photoURL);
+    
   }
 
     return (
@@ -174,7 +182,11 @@ export default function Homepage() {
           <FormControl isRequired display="flex" flexDirection="column">
             <FormLabel>Upload Photo</FormLabel>
             <img width="200px" max-height="400px" src="" alt="" />
-            <input type="file" class="custom-file-input" id="inputGroupFile02" />
+            <input 
+              type="file" 
+              class="custom-file-input" 
+              id="inputGroupFile02"
+              onChange={(e) => setSelectedFile(e.target.files[0])} />
             <FormErrorMessage>Error message</FormErrorMessage>
             <Button
               variant="solid"

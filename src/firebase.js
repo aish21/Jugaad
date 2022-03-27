@@ -63,8 +63,7 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
   }
 
 export function writeProductInfo(uid, title, desc, price, photoURL) {
-    set(ref(database, "products/" + uid), {
-        title: title,
+    set(ref(database, "products/" + uid + "/" + title), {
         desc: desc,
         price: price,
         photoURL: photoURL
