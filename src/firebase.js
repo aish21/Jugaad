@@ -70,11 +70,11 @@ export function writeProductInfo(uid, title, desc, price, photoURL) {
         photoURL: photoURL
       })
       .then(() => {
-          console.log("user data registered");
+          console.log("product data registered");
           // ...
       })
       .catch((error) => {
-          const errorCode = error.code;
+          const errorCode = error.message;
           console.log(errorCode);
       });
 }

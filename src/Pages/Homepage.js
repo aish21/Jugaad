@@ -16,7 +16,7 @@ import {
     FormControl
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
-import { updateSocials, database, firebasestorage } from '../firebase';
+import { updateSocials, database, writeProductInfo } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
 import Iframe from 'react-iframe';
@@ -34,6 +34,9 @@ export default function Homepage() {
   const [youTube, setYoutube] = useState("https://www.youtube.com");
   const [fb, setFB] = useState("https://www.facebook.com");
   const [twitter, setTwitter] = useState("https://twitter.com");
+  const [prodTitle, setProdTitle] = useState("");
+  const [prodDesc, setProdDesc] = useState("");
+  const [prodPrice, setProdPrice] = useState("");
 
   useEffect(() => {
     const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
@@ -52,6 +55,11 @@ export default function Homepage() {
   function onSubmitSettings() {
     updateSocials(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitter);
     setLinks([twitter, fb, youTube, insta]);
+  }
+
+  function onSubmitAd() {
+    console.log(prodDesc);
+    writeProductInfo(JSON.parse(localStorage.getItem("uid")),prodTitle, prodDesc, prodPrice, "null");
   }
 
     return (
@@ -150,17 +158,17 @@ export default function Homepage() {
           </Text>
           <FormControl isRequired mb={5}>
             <FormLabel>Product / Service Title</FormLabel>
-            <Input placeholder="Enter title here" />
+            <Input placeholder="Enter title here" onChange={(e) => setProdTitle(e.target.value)}/>
             <FormErrorMessage>Error message</FormErrorMessage>
           </FormControl>
           <FormControl isRequired mb={5}>
             <FormLabel>Product / Service Description</FormLabel>
-            <Input placeholder="Enter description here" />
+            <Input placeholder="Enter description here" onChange={(e) => setProdDesc(e.target.value)}/>
             <FormErrorMessage>Error message</FormErrorMessage>
           </FormControl>
           <FormControl isRequired mb={5}>
             <FormLabel>Price (in SGD)</FormLabel>
-            <Input type="number" placeholder="Enter price here" />
+            <Input type="number" placeholder="Enter price here" onChange={(e) => setProdPrice(e.target.value)}/>
             <FormErrorMessage>Error message</FormErrorMessage>
           </FormControl>
           <FormControl isRequired display="flex" flexDirection="column">
@@ -180,7 +188,11 @@ export default function Homepage() {
               Browse
             </Button>
           </FormControl>
-          <Button variant="solid" size="md" mt={10} colorScheme="whatsapp">
+          <Button 
+            variant="solid" 
+            size="md" mt={10} 
+            colorScheme="whatsapp" 
+            onClick = {onSubmitAd}>
             Upload Ad
           </Button>
         </Box>
