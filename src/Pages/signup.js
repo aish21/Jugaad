@@ -36,14 +36,83 @@ var companyName = ""
 var companyContactNo = ""
 var companyEmail = ""
 var twitchID = ""
+var checkPassed = false;
 
 export default function Signup() {
   const history = useHistory();
 
+  function validationChecks() {
+    if(emailId.length > 0 && 
+      password.length > 0 && 
+      firstName.length > 0 && 
+      lastName.length > 0 &&
+      companyName.length > 0 &&
+      companyContactNo.length > 0 &&
+      companyEmail.length > 0 &&
+      twitchID.length > 0){
+        checkPassed = true;
+        console.log('correct'); 
+      }
+    else{
+      checkPassed = false;
+      alert("One or more fields missing! All fields must be populated in order for a successful registration.")
+      return checkPassed;
+    }
+  
+    // Email Check
+    if(checkPassed && emailId.includes('@')){
+      console.log('correct');
+    }
+    else{
+      checkPassed = false;
+      alert('Email format incorrect, try again!');
+      return checkPassed;
+    }
+  
+    // Password Check
+    if(checkPassed && 
+      password.length > 8 && 
+      (password.includes('!') || password.includes('.') || password.includes('$') || password.includes(',') || password.includes(';') || password.includes('/')) &&
+      /\d/.test(password) &&
+      (!/[a-z]/.test(password) && /[A-Z]/.test(password))){
+        console.log('correct');
+    }
+    else{
+      checkPassed = false;
+      alert('Error! Password must be at least 8 characters, must contain at least one special character (! , . ; / $), must have an upper case letter and must contain at least one number!');
+      return checkPassed;
+    }
+  
+    // Contact Number 
+    if(checkPassed && isNaN(companyContactNo)){
+      console.log('correct');
+    } 
+    else{
+      checkPassed = false;
+      alert('Contact Number can only contain digits between 0 and 9!');
+      return checkPassed;
+    }
+
+    // Company Email
+    if(checkPassed && companyEmail.includes('@')){
+      console.log('correct');
+    }
+    else{
+      checkPassed = false;
+      alert('Company Email format incorrect, try again!');
+      return checkPassed;
+    }
+
+    return checkPassed;
+  }
+
 function OnClickEvent() {
-  signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID)
-  alert("Successfully Registered! Please Login")
-  history.push("/Login")
+  if(validationChecks()){
+    console.log('reached inside');
+    signUpUser(emailId,password, firstName, lastName, companyName, companyContactNo, companyEmail, twitchID)
+    alert("Successfully Registered! Please Login")
+    history.push("/Login")
+  }
 }
 
 const getEmail = (event) => {
