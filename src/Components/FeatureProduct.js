@@ -1,7 +1,11 @@
-import Image from "../Images/nillkin-case.webp";
-import { Link } from "react-router-dom";
+import React, { useParams, useEffect } from "react";
 
-function FeatureProduct() {
+function getSecondPart(str) {
+  return str.split('%')[1];
+}
+
+function FeatureProduct(props) {
+
   return (
     <div className="col">
       <div className="card shadow-sm">
@@ -12,13 +16,9 @@ function FeatureProduct() {
           src={Image}
         />
         <div className="card-body">
-          <h5 className="card-title text-center">Nillkin iPhone X cover</h5>
-          <p className="card-text text-center text-muted">10000 Ks</p>
-          <div className="d-grid gap-2">
-            <Link to="/products/1" className="btn btn-outline-dark" replace>
-              Detail
-            </Link>
-          </div>
+          <h5 className="card-title text-center">{getSecondPart(props.prodName)}</h5>
+          <p className="card-text text-center text-muted">{props.prodPrice}</p>
+          <p className="card-text text-center text-muted">{props.prodDesc}</p>
         </div>
       </div>
     </div>

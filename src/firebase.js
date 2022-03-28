@@ -14,7 +14,6 @@ const firebaseConfig = {
   databaseURL: "https://jugaad-dc4e0-default-rtdb.asia-southeast1.firebasedatabase.app/"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
@@ -63,14 +62,14 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
   }
 
 export function writeProductInfo(uid, title, desc, price, photoURL) {
-    set(ref(database, "products/" + uid + "/" + title), {
+    const prodRef = ref(database, "products/" + uid + "%" + title)
+    set(prodRef, {
         desc: desc,
         price: price,
         photoURL: photoURL
       })
       .then(() => {
           console.log("product data registered");
-          // ...
       })
       .catch((error) => {
           const errorCode = error.message;

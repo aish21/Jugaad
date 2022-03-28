@@ -20,7 +20,7 @@ import { updateSocials, database, writeProductInfo, firebasestorage } from '../f
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
 import Iframe from 'react-iframe';
-import { getDownloadURL, uploadBytes, ref as sRef } from "firebase/storage";
+import { uploadBytes, ref as sRef } from "firebase/storage";
 
 export default function Homepage() {
 
