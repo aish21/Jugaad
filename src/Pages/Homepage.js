@@ -67,7 +67,6 @@ export default function Homepage() {
     });
     // const photoURL = getDownloadURL(sRef(firebasestorage, "adPicture/" + JSON.parse(localStorage.getItem("uid")) + "/" + prodTitle + ".jpeg"));
     // console.log(photoURL);
-    
   }
 
     return (
