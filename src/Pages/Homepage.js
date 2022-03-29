@@ -21,6 +21,7 @@ import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
 import Iframe from 'react-iframe';
 import { uploadBytes, ref as sRef } from "firebase/storage";
+import { useParams } from "react-router-dom";
 
 export default function Homepage() {
 
@@ -39,8 +40,10 @@ export default function Homepage() {
   const [prodDesc, setProdDesc] = useState("");
   const [prodPrice, setProdPrice] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const params = useParams();
 
   useEffect(() => {
+    console.log(params.uid);
     const userRef = ref(database, 'users/' + JSON.parse(localStorage.getItem("uid")));
     onValue(userRef, (snapshot) => {
       const data = snapshot.val();

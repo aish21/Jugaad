@@ -1,11 +1,20 @@
-import React, { useParams, useEffect } from "react";
+import React, { useHistory } from "react";
 
 function getSecondPart(str) {
   return str.split('%')[1];
 }
 
-function FeatureProduct(props) {
+function getFirstPart(str) {
+  return str.split('%')[0];
+}
 
+export default function FeatureProduct(props) {
+  const history = useHistory();
+
+  function onClick(uid) {
+    history.push({ path: "/Homepage", search:"?uid={"+ getFirstPart(uid) +"}" });
+  }
+  
   return (
     <div className="col">
       <div className="card shadow-sm">
@@ -24,5 +33,3 @@ function FeatureProduct(props) {
     </div>
   );
 }
-
-export default FeatureProduct;
