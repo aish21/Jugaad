@@ -144,15 +144,8 @@ export default function Homepage() {
       </Box>
       </ChakraProvider>
           </div>
-          <div label="Live Chat">
-          <Iframe url = "https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe">
-                  width="86%"
-                  height="86%"
-                  position="absolute"
-                  id="myID"
-                  className="myClassname"
-                  overflow="visible"
-          </Iframe>
+          <div label="ChatBot">
+          <iframe src="https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe" width={940} height={500} ></iframe>
           </div>
           <div label="Live Stream">
           <TwitchEmbed
@@ -254,7 +247,7 @@ export default function Homepage() {
             pt={5}
             pb={5}
           >
-            Follow us on Social Media!
+            Update your social media links!
           </Text>
           <Textarea
             placeholder="Enter link to Instagram Page"
@@ -370,16 +363,6 @@ export default function Homepage() {
           <FollowAt links = {links}/>
         </Box>
         </ChakraProvider>
-            </div>
-            <div label="Live Chat">
-            <Iframe url = "https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe">
-                    width="86%"
-                    height="86%"
-                    position="absolute"
-                    id="myID"
-                    className="myClassname"
-                    overflow="visible"
-            </Iframe>
             </div>
             <div label="Live Stream">
             <TwitchEmbed
