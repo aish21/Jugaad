@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import ReactGA from 'react-ga';
 import React, {useEffect} from 'react'
 
+
 // Import Pages
 import Template from "./Pages/Template";
 import Landing from "./Pages/Landing";
@@ -11,10 +12,13 @@ import Signup from "./Pages/signup";
 import Homepage from "./Pages/Homepage";
 
 function App() {
+  
   useEffect(() => {
     ReactGA.initialize('G-D1HNY218WB');
     ReactGA.pageview(window.location.pathname + window.location.search)
     },[]);
+  
+    
   return (
     <Template>
       <Switch>

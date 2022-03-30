@@ -5,10 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
 import { useEffect, useState } from "react";
+import JsonData from "../data/data.json";
+import { Features } from "../Components/features";
 
 const prodListRef = ref(database, "products/");
 
 function Landing() {
+  const [landingPageData, setLandingPageData] = useState({});
+  useEffect(() => {
+    setLandingPageData(JsonData);
+  }, []);
+
+
   var [prodList, setProdList] = useState({}); 
   const [isLoading, setLoading] = useState(true);
   onValue(prodListRef, (snapshot) => {
@@ -31,11 +39,7 @@ function Landing() {
       <>
         <ScrollToTopOnMount />
         <Banner />
-        <div className="d-flex flex-column bg-white py-4">
-          <p className="text-center px-5">
-            We help accelerate your business
-          </p>
-        </div>
+        <Features data={landingPageData.Features} />
         <h2 className="text-muted text-center mt-4 mb-3">New Arrival</h2>
         <div className="container pb-5 px-lg-5">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-md-5">

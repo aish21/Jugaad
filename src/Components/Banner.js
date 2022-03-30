@@ -23,7 +23,7 @@ function BannerImage(props) {
     >
       <div
         className="ratio"
-        style={{ "--bs-aspect-ratio": "50%", maxHeight: "460px" }}
+        style={{ "--bs-aspect-ratio": "77%", maxHeight: "775px" }}
       >
         <img
           className="d-block w-100 h-100 bg-dark cover"
