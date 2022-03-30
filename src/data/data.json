@@ -152,33 +152,33 @@
       }
     ],
     "Contact": {
-      "address": "4321 California St, San Francisco, CA 12345 ",
-      "phone": "+1 123 456 1234",
-      "email": "info@company.com",
-      "facebook": "fb.com",
-      "twitter": "twitter.com",
-      "youtube": "youtube.com"
+      "address": "76 Nanyang Drive, 637331",
+      "phone": "+65 90123478",
+      "email": "jugaad.help.service@gmail.com",
+      "facebook": "https://www.facebook.com",
+      "twitter": "https://twitter.com/?lang=en",
+      "youtube": "https://www.youtube.com/channel/UCvu27HQsxoIG25cqCL7lmTw"
     },
     "Features": [
       {
         "icon": "fa fa-comments-o",
-        "title": "Lorem ipsum",
-        "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+        "title": "ChatBot",
+        "text": "Live chatbot to help setup your business page with ease!"
       },
       {
         "icon": "fa fa-bullhorn",
-        "title": "Lorem ipsum",
-        "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+        "title": "Post Ads",
+        "text": "Post product ads at the click of a button! It is the first thing customers are able to view when they visit Jugaad."
       },
       {
         "icon": "fa fa-group",
-        "title": "Lorem ipsum",
-        "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+        "title": "Live Stream",
+        "text": "Interact live with potential customers by showcasing your products and recieve donations!"
       },
       {
         "icon": "fa fa-magic",
-        "title": "Lorem ipsum",
-        "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+        "title": "Unified Platform",
+        "text": "All in one platform for starting your online business with ease!"
       }
     ]
   }

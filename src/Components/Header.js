@@ -28,9 +28,6 @@ function Header() {
           <div className={"navbar-collapse offcanvas-collapse " + (openedDrawer ? 'open' : '')}>
             <ul className="navbar-nav me-auto mb-lg-0">
               <li className="nav-item">
-                <Link to="/products" className="nav-link" replace onClick={changeNav}>
-                  Explore
-                </Link>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 mb-lg-0">

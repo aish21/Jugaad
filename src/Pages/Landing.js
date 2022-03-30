@@ -7,6 +7,7 @@ import { database } from "../firebase";
 import { useEffect, useState } from "react";
 import JsonData from "../data/data.json";
 import { Features } from "../Components/features";
+import { Contact } from "../Components/contact";
 
 const prodListRef = ref(database, "products/");
 
@@ -31,14 +32,14 @@ function Landing() {
   },[prodList]);
   
   if (isLoading) {
-    return (<h2 className="text-muted text-center mt-4 mb-3">New Arrival</h2>);
+    return (<h2 className="text-muted text-center mt-4 mb-3">New Arrivals</h2>);
   } else {
     return (
       <>
         <ScrollToTopOnMount />
         <Banner />
         <Features data={landingPageData.Features} />
-        <h2 className="text-muted text-center mt-4 mb-3">New Arrival</h2>
+        <h2 className="text-muted text-center mt-4 mb-3">New Arrivals</h2>
         <div className="container pb-5 px-lg-5">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-md-5">
             {
@@ -48,20 +49,7 @@ function Landing() {
             }
           </div>
         </div>
-        <div className="d-flex flex-column bg-white py-4">
-          <h5 className="text-center mb-3">Follow us on</h5>
-          <div className="d-flex justify-content-center">
-            <a href="!#" className="me-3">
-              <FontAwesomeIcon icon={["fab", "facebook"]} size="2x" />
-            </a>
-            <a href="!#">
-              <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
-            </a>
-            <a href="!#" className="ms-3">
-              <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
-            </a>
-          </div>
-        </div>
+        <Contact data={landingPageData.Contact} />
       </>
     );
   }
