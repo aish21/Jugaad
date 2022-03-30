@@ -25,6 +25,7 @@ export const Contact = (props) => {
       .then(
         (result) => {
           console.log(result.text)
+          alert('Form successfully submitted!')
           clearState()
         },
         (error) => {

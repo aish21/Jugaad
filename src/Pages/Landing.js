@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import JsonData from "../data/data.json";
 import { Features } from "../Components/features";
 import { Contact } from "../Components/contact";
+import { About } from "../Components/about";
 
 const prodListRef = ref(database, "products/");
 
@@ -49,6 +50,7 @@ function Landing() {
             }
           </div>
         </div>
+        <About data={landingPageData.About} />
         <Contact data={landingPageData.Contact} />
       </>
     );
