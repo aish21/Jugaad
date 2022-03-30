@@ -1,4 +1,4 @@
-import React, { useHistory } from "react";
+import { useHistory } from "react-router-dom";
 
 function getSecondPart(str) {
   return str.split('%')[1];
@@ -12,7 +12,7 @@ export default function FeatureProduct(props) {
   const history = useHistory();
 
   function onClick(uid) {
-    history.push({ path: "/Homepage", search:"?uid={"+ getFirstPart(uid) +"}" });
+    history.push("/Homepage" + getFirstPart(uid));
   }
   
   return (
@@ -23,6 +23,7 @@ export default function FeatureProduct(props) {
           height="240"
           alt=""
           src={Image}
+          onClick={() => onClick(props.prodName)}
         />
         <div className="card-body">
           <h5 className="card-title text-center">{getSecondPart(props.prodName)}</h5>

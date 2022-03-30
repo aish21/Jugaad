@@ -21,9 +21,7 @@ function Landing() {
   const [isLoading, setLoading] = useState(true);
   onValue(prodListRef, (snapshot) => {
     snapshot.forEach((childSnapshot) => {
-      const currVal = prodList;
-      currVal[childSnapshot.key] = childSnapshot.val();
-      prodList = currVal;
+      prodList[childSnapshot.key] = childSnapshot.val();
     });
   });
 
@@ -45,7 +43,7 @@ function Landing() {
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-md-5">
             {
               Object.keys(prodList).map((key, index) => (
-                <FeatureProduct key = {index} prodName = {key} prodDesc = {prodList[key]["desc"]} prodPrice = {prodList[key]["price"]}/>
+                <FeatureProduct key = {index} prodName = {key} prodDesc = {prodList[key]["desc"]} prodPrice = {prodList[key]["price"]} picPath = {prodList[key]["photoURL"]}/>
               ))
             }
           </div>

@@ -31,8 +31,7 @@ function App() {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/Homepage">
-          <Homepage />
+        <Route exact path="/Homepage:uid" children = {<Homepage />}>
         </Route>
       </Switch>
     </Template>
