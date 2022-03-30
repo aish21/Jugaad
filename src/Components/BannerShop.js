@@ -1,6 +1,6 @@
-import BannerZero from "../Images/banner-1.jpg";
-import BannerOne from "../Images/banner-1.jpg";
-import BannerTwo from "../Images/banner-1.jpg";
+import { firebasestorage } from "../firebase";
+import { ref, getDownloadURL } from "firebase/storage";
+import React, { useState } from "react";
 
 function BannerIncidator(props) {
   return (
@@ -38,7 +38,18 @@ function BannerImage(props) {
   );
 }
 
-function Banner() {
+function Banner(props) {
+  const [banner, setBanner] = useState(null);
+  console.log(props.picPath);
+  getDownloadURL(ref(firebasestorage, props.picPath))
+  .then((url) => {
+    console.log(url);
+    setBanner(url);
+  })
+  .catch((error) => {
+    // Handle any errors
+    console.log(error.message);
+  });
   return (
     <div
       id="bannerIndicators"
@@ -48,13 +59,9 @@ function Banner() {
     >
       <div className="carousel-indicators">
         <BannerIncidator index="0" active={true} />
-        <BannerIncidator index="1" />
-        <BannerIncidator index="2" />
       </div>
       <div className="carousel-inner">
-        <BannerImage image={BannerZero} active={true} />
-        <BannerImage image={BannerOne} />
-        <BannerImage image={BannerTwo} />
+        <BannerImage image={banner} active={true} />
       </div>
     </div>
   );

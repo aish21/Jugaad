@@ -1,28 +1,14 @@
 import React from 'react'
 import {
   ChakraProvider,
-  Stack,
-  Avatar,
-  AvatarBadge,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
   FormLabel,
   Input,
-  FormHelperText,
   FormErrorMessage,
-  Grid,
-  Switch,
-  InputGroup,
-  InputRightElement,
-  Icon,
   Box,
   Text,
   FormControl,
   Button
 } from '@chakra-ui/react'
-import { EmailIcon } from '@chakra-ui/icons'
 
 const App = () => (
   <ChakraProvider resetCSS>

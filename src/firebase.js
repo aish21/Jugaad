@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set, update, onChildAdded, onValue } from "firebase/database";
+import { getDatabase, ref, set, update } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
@@ -50,7 +50,8 @@ export function writeUserData(uid, emailId, firstName, lastName, companyName, co
       insta: null,
       fb: null,
       youtube: null,
-      twitter: null
+      twitter: null,
+      bannerURL: "/banner/banner-1.jpg"
     })
     .then(() => {
         console.log("user data registered");
@@ -78,12 +79,13 @@ export function writeProductInfo(uid, title, desc, price, photoURL) {
       });
 }
 
-export function updateSocials(uid, insta, facebook, youtube, twitter) {
+export function updateSocialsAndBanner(uid, insta, facebook, youtube, twitter,bannerURL) {
     update(ref(database, "users/" + uid), {
         insta: insta,
         fb: facebook,
         twitter: twitter,
-        youtube: youtube
+        youtube: youtube,
+        bannerURL: bannerURL
     })
     .catch((error) => {
         const errorCode = error.code;

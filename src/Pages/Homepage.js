@@ -16,12 +16,11 @@ import {
     FormControl
   } from '@chakra-ui/react'
 import { TwitchEmbed } from 'react-twitch-embed';
-import { updateSocials, database, writeProductInfo, firebasestorage } from '../firebase';
+import { updateSocialsAndBanner , database, writeProductInfo, firebasestorage } from '../firebase';
 import {ref, onValue } from "firebase/database";
 import FollowAt from "react-social-media-follow";
 import Iframe from 'react-iframe';
 import { uploadBytes, ref as sRef } from "firebase/storage";
-import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Homepage() {
@@ -41,15 +40,17 @@ export default function Homepage() {
   const [prodDesc, setProdDesc] = useState("");
   const [prodPrice, setProdPrice] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [banner, setBanner] = useState(null);
   const {uid} = useParams();
   const isOwner = (uid === JSON.parse(localStorage.getItem("uid")));
 
   useEffect(() => {
-    console.log(uid);
     const userRef = ref(database, 'users/' + uid);
     onValue(userRef, (snapshot) => {
       const data = snapshot.val();
       setData(data);
+      localStorage.setItem("bannerPath", JSON.stringify(data.bannerURL));
+      console.log(data.bannerURL);
     });
   }, []);
 
@@ -60,8 +61,13 @@ export default function Homepage() {
   }, [data]);
 
   function onSubmitSettings() {
-    updateSocials(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitter);
-    setLinks([twitter, fb, youTube, insta]);
+    const photoRef = sRef(firebasestorage, "banner/" + JSON.parse(localStorage.getItem("uid")));
+    uploadBytes(photoRef, banner).then((snapshot) => {
+      const bannerURL = snapshot.ref.fullPath;
+      updateSocialsAndBanner(JSON.parse(localStorage.getItem("uid")),insta,fb, youTube,twitter,bannerURL);
+      setLinks([twitter, fb, youTube, insta]);
+    });
+    
   }
 
   function onSubmitAd() {
@@ -70,15 +76,22 @@ export default function Homepage() {
       const photoURL = snapshot.ref.fullPath;
       writeProductInfo(JSON.parse(localStorage.getItem("uid")),prodTitle, prodDesc, prodPrice, photoURL);
     });
-    // const photoURL = getDownloadURL(sRef(firebasestorage, "adPicture/" + JSON.parse(localStorage.getItem("uid")) + "/" + prodTitle + ".jpeg"));
-    // console.log(photoURL);
+  }
+
+  const BannerAvailable = () => {
+    if (data.bannerURL === null) {
+      return <p>""</p>
+    }
+    else {
+      return <Banner picPath = {JSON.parse(localStorage.getItem("bannerPath"))}/>
+    }
   }
 
   if(isOwner) {
     return (
       <div className="container mt-5 py-4 px-xl-5">
       <ScrollToTopOnMount />
-      <Banner/>
+      {BannerAvailable()}
       <div>
       <Tabs>
           <div label="About">
@@ -232,48 +245,6 @@ export default function Homepage() {
         >
           <Text
             display="flex"
-            justifyContent="center"
-            alignItems="center"
-            fontWeight="bold"
-            textAlign="center"
-            fontSize="4xl"
-            flexDirection="row"
-            mb={5}
-          >
-            Business Name{' '}
-          </Text>
-          <Button variant="solid" size="md">
-            Edit Profile
-          </Button>
-        </Container>
-        <Container
-          display="flex"
-          justifyContent="flex-start"
-          flexDirection="column"
-        >
-          <Text
-            display="flex"
-            justifyContent="flex-start"
-            alignItems="stretch"
-            fontWeight="bold"
-            textAlign="center"
-            fontSize="2xl"
-            flexDirection="column"
-            pt={5}
-            pb={5}
-          >
-            About Us
-          </Text>
-          <Text></Text>
-          <Textarea placeholder="Give a brief description of your business, and attract potential new customers!" />
-        </Container>
-        <Container
-          display="flex"
-          justifyContent="flex-start"
-          flexDirection="column"
-        >
-          <Text
-            display="flex"
             justifyContent="flex-start"
             alignItems="stretch"
             fontWeight="bold"
@@ -313,6 +284,25 @@ export default function Homepage() {
             mb={5}
             onChange = {(e) => setTwitter(e.target.value)}
           />
+          <Text
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="stretch"
+            fontWeight="bold"
+            textAlign="center"
+            fontSize="2xl"
+            flexDirection="column"
+            pt={5}
+            pb={5}
+          >
+            Upload Banner
+          </Text>
+           <FormControl isRequired display="flex" flexDirection="column">
+            <img width="200px" max-height="400px" src="" alt="" />
+            <input type="file" onChange={(e) => setBanner(e.target.files[0])} class="custom-file-input" id="inputGroupFile03" />
+            <FormErrorMessage>Error message</FormErrorMessage>
+          </FormControl>
+          <p>{" "}</p>
           <Button variant="solid" size="md"
           onClick={onSubmitSettings}>
             Confirm Changes
@@ -328,7 +318,7 @@ export default function Homepage() {
   return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
-        <Banner/>
+        <Banner picPath = {data.bannerURL}/>
         <div>
         <Tabs>
             <div label="About">
@@ -405,6 +395,4 @@ export default function Homepage() {
     </div>
     );
 }
-
-    
 }
