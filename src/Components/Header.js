@@ -39,6 +39,7 @@ function Header() {
   }
 
   if (isLoggedIn) {
+    const newTo = "/Homepage" + JSON.parse(localStorage.getItem("uid"));
     return (
       <header>
         <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-white border-bottom">
@@ -69,6 +70,11 @@ function Header() {
                     className="dropdown-menu dropdown-menu-end"
                     aria-labelledby="userDropdown"
                   >
+                    <li>
+                    <Link to={newTo} className="dropdown-item">
+                        Go Home
+                      </Link>
+                    </li>
                     <li>
                     <Link to="/Login" className="dropdown-item" onClick={logoutUser}>
                         Logout

@@ -75,6 +75,7 @@ export default function Homepage() {
     uploadBytes(photoRef, selectedFile).then((snapshot) => {
       const photoURL = snapshot.ref.fullPath;
       writeProductInfo(JSON.parse(localStorage.getItem("uid")),prodTitle, prodDesc, prodPrice, photoURL);
+      alert("Advertisment created!");
     });
   }
 
