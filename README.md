@@ -9,6 +9,8 @@
 <h6 align="center">We help accelerate your business</h6>
 <h4 align="center">All in one platform for setting up your business online with ease!</h4>
 
+[LIVE DEMO](https://jugaad-solution-challenge-22.herokuapp.com/#/)
+
 <p align="center">
   <a href="#about-us">About Us</a> •
   <a href="#what-are-we-trying-to-solve">What are we trying to solve?</a> •
