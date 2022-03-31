@@ -10,7 +10,7 @@
 <h4 align="center">All in one platform for setting up your business online with ease!</h4>
 
 <p align="center">
-  <a href="#live-demo">Live Demo</a>
+  <a href="#live-demo">Live Demo</a> •
   <a href="#about-us">About Us</a> •
   <a href="#what-are-we-trying-to-solve">What are we trying to solve?</a> •
   <a href="#what-is-jugaad">What is Jugaad?</a> •
