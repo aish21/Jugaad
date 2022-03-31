@@ -49,7 +49,7 @@ export default function Homepage() {
     onValue(userRef, (snapshot) => {
       const data = snapshot.val();
       setData(data);
-      localStorage.setItem("bannerPath", JSON.stringify(data.bannerURL));
+      localStorage.setItem("bannerURL", JSON.stringify(data.bannerURL));
       console.log(data.bannerURL);
     });
   }, []);
@@ -78,20 +78,11 @@ export default function Homepage() {
     });
   }
 
-  const BannerAvailable = () => {
-    if (data.bannerURL === null) {
-      return <p>""</p>
-    }
-    else {
-      return <Banner picPath = {JSON.parse(localStorage.getItem("bannerPath"))}/>
-    }
-  }
-
   if(isOwner) {
     return (
       <div className="container mt-5 py-4 px-xl-5">
       <ScrollToTopOnMount />
-      {BannerAvailable()}
+      <Banner />
       <div>
       <Tabs>
           <div label="About">
@@ -311,7 +302,7 @@ export default function Homepage() {
   return (
     <div className="container mt-5 py-4 px-xl-5">
         <ScrollToTopOnMount />
-        <Banner picPath = {data.bannerURL}/>
+        <Banner />
         <div>
         <Tabs>
             <div label="About">

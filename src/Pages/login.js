@@ -26,6 +26,7 @@ export default function Login() {
         const user = userCredential.user;
         console.log(user);
         localStorage.setItem("uid", JSON.stringify(user.uid));
+        localStorage.setItem("bannerURL", JSON.stringify(user.bannerURL));
         history.push('/Homepage'+user.uid);
     })
     .catch((error) => {
