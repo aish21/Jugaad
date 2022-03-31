@@ -12,7 +12,7 @@ import Signup from "./Pages/signup";
 import Homepage from "./Pages/Homepage";
 
 function App() {
-  // localStorage.setItem("bannerPath", JSON.stringify("/banner/banner-1.jpg"));
+  localStorage.setItem("bannerURL", JSON.stringify("banner/banner-1.jpg"));
   useEffect(() => {
     ReactGA.initialize('G-D1HNY218WB');
     ReactGA.pageview(window.location.pathname + window.location.search)

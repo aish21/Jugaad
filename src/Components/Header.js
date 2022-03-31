@@ -31,6 +31,7 @@ function Header() {
       setOpenedDrawer(false)
     }
     localStorage.removeItem("uid");
+    localStorage.setItem("bannerURL", JSON.stringify("banner/banner-1.jpg"));
     signOut(auth).then(() => {
       alert("Logged out!");
       setLoggedIn(false);
