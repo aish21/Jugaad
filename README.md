@@ -25,8 +25,8 @@
 ![screenshot](https://github.com/aish21/Jugaad/blob/2ea214823823e128861857a39820152c8b6bc8e2/public/thumb.png)
 
 ## Live Demo
-The application is hosted live, and can be accessed [here](https://jugaad-solution-challenge-22.herokuapp.com/#/)
-The demonstration video for the same can be viewed [here](https://youtu.be/xzM0fbk4wTc)
+* The application is hosted live, and can be accessed [here](https://jugaad-solution-challenge-22.herokuapp.com/#/)
+* The demonstration video for the same can be viewed [here](https://youtu.be/xzM0fbk4wTc)
 
 ## About Us
 Our motivation for this project originates from the struggles of the pandemic, which resulted in isolation, restricted social interaction and travel limitations. A consequence of this boredom and the ample time at our disposal paved the way for many new hobbies from fresh YouTube channels to exciting social media blogs. One of our friends in particular saw rapidly increasing attraction for her Food Blog, leading her to attempt to monetize her efforts to supplement her expenses. However, the lack of tools to assist young entrepreneurs was a challenge she could not overcome. This was when our solution, Jugaad, was ideated - a platform that allows new and existing businesses to go online with ease, providing them with outreach and online engagement to help accelerate their business. Jugaad, a colloquial Hindi term, is most commonly used to denote improvisation or having the presence of mind to come up with rapid solutions. Our solution too, was one such 'jugaad' - developing a fast work-around solution to assist a friend.
