@@ -25,10 +25,13 @@ function Landing() {
     snapshot.forEach((childSnapshot) => {
       prodList[childSnapshot.key] = childSnapshot.val();
     });
+    if (isLoading) {
+      setLoading(false);
+    }
   });
 
   useEffect(() => {
-    setLoading(false);
+    
     console.log(Object.keys(prodList));
   },[prodList]);
   
