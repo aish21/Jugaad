@@ -9,9 +9,8 @@
 <h6 align="center">We help accelerate your business</h6>
 <h4 align="center">All in one platform for setting up your business online with ease!</h4>
 
-[LIVE DEMO](https://jugaad-solution-challenge-22.herokuapp.com/#/)
-
 <p align="center">
+  <a href="#live-demo">Live Demo</a>
   <a href="#about-us">About Us</a> •
   <a href="#what-are-we-trying-to-solve">What are we trying to solve?</a> •
   <a href="#what-is-jugaad">What is Jugaad?</a> •
@@ -24,6 +23,9 @@
 </p>
 
 ![screenshot](https://github.com/aish21/Solution-Challenge/blob/3480ef86af03f6897b71e0ac316a8535204eb980/src/Images/banner-1.jpg)
+
+## Live Demo
+The application is hosted live, and can be accessed [here](https://jugaad-solution-challenge-22.herokuapp.com/#/)
 
 ## About Us
 Our motivation for this project originates from the struggles of the pandemic, which resulted in isolation, restricted social interaction and travel limitations. A consequence of this boredom and the ample time at our disposal paved the way for many new hobbies from fresh YouTube channels to exciting social media blogs. One of our friends in particular saw rapidly increasing attraction for her Food Blog, leading her to attempt to monetize her efforts to supplement her expenses. However, the lack of tools to assist young entrepreneurs was a challenge she could not overcome. This was when our solution, Jugaad, was ideated - a platform that allows new and existing businesses to go online with ease, providing them with outreach and online engagement to help accelerate their business. Jugaad, a colloquial Hindi term, is most commonly used to denote improvisation or having the presence of mind to come up with rapid solutions. Our solution too, was one such 'jugaad' - developing a fast work-around solution to assist a friend.
