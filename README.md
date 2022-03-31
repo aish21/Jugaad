@@ -99,7 +99,7 @@ MIT
 <table>
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/abhinayasrinivasan/"><img src="https://github.com/aish21/Solution-Challenge/blob/efdcb089d64ef2a81373349e20931a704688fa72/public/img/team/WhatsApp%20Image%202022-03-31%20at%202.53.11%20PM.jpeg" width="100px;" alt=""/><br /><sub><b>Abhinaya Srinivasan</b></sub></a></td>
-    <td align="center"><a href="https://www.linkedin.com/in/aishwarya-singh-547092174/"><img src="https://github.com/aish21/Solution-Challenge/blob/efdcb089d64ef2a81373349e20931a704688fa72/public/img/team/picture.jpg" width="100px;" alt=""/><br /><sub><b>Abhinaya Srinivasan</b></sub></a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/aishwarya-singh-547092174/"><img src="https://github.com/aish21/Solution-Challenge/blob/efdcb089d64ef2a81373349e20931a704688fa72/public/img/team/picture.jpg" width="100px;" alt=""/><br /><sub><b>Aishwarya Singh</b></sub></a></td>
   </tr>
 </table>
   
