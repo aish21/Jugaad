@@ -64,9 +64,9 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/aish21/Solution-Challenge.git
+$ git clone https://github.com/aish21/Jugaad.git
 # Go into the repository
-$ cd Solution-Challenge
+$ cd Jugaad
 # Install dependencies
 $ npm install
 # Run the app
