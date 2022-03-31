@@ -136,7 +136,7 @@ export default function Homepage() {
       </ChakraProvider>
           </div>
           <div label="ChatBot">
-          <iframe src="https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe" width={940} height={500} ></iframe>
+          <iframe src="https://console.dialogflow.com/api-client/demo/embedded/07b80450-f136-4545-80ee-a2ab2a7208fe" width="100%" height={600} ></iframe>
           </div>
           <div label="Live Stream">
           <TwitchEmbed
@@ -187,19 +187,9 @@ export default function Homepage() {
             id="inputGroupFile02"
             onChange={(e) => setSelectedFile(e.target.files[0])} />
           <FormErrorMessage>Error message</FormErrorMessage>
-          <Button
-            variant="solid"
-            size="md"
-            display="flex"
-            justifyContent="center"
-            flexDirection="column"
-            alignItems="center"
-            mt={3}
-          >
-            Browse
-          </Button>
+
         </FormControl>
-        <Button 
+        <Button
           variant="solid" 
           size="md" mt={10} 
           colorScheme="whatsapp" 

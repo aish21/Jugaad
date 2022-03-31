@@ -252,7 +252,6 @@ return (
               Password must have a length of at least 8 characters, including
               numbers, upper case letters and special case characters
             </FormHelperText>
-            <FormErrorMessage>Invalid Entry!</FormErrorMessage>
           </FormControl>
           <FormControl isRequired pt={5}>
             <FormLabel>Retype Password</FormLabel>
